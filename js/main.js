@@ -1,3 +1,5 @@
+let Cart = []
+
 const Products = [
     {
         id:1,
@@ -28,6 +30,22 @@ const Products = [
     },
 ]
 
+// START CART DETAIL
+const cartProducts = document.getElementById("cart-body")
+
+const cartUpdate = () => {
+    cartProducts.innerHTML = ""
+    Cart.forEach(product => {
+        cartProducts.innerHTML +=
+        `<div class="cart-product">
+        <h5 class="product-title">${product.name}</h5>
+        <p class="product-price"><span>${product.price}</span> €</p>
+        <p class="product-amount"><span>${product.amount}</span></p>
+        </div>`
+    })
+}
+// END CART DETAIL
+
 
 // START PRODUCTS CARDS
 const productItem = document.getElementById("wine-group")
@@ -39,7 +57,7 @@ Products.forEach(product => {
     <div class="wine-description">
         <h5 class="wine-title">${product.name}</h5>
         <p class="wine-year"><small class="text-body-secondary">${product.year}</small></p>
-        <p class="wine-price">Price ${product.price}€</p>
+        <p class="wine-price">Price <span>${product.price}</span> €</p>
         <p class="wine-description">${product.description}</p>
         <a href="#" class="btn-buy">Comprar</a>
     </div>
@@ -52,14 +70,33 @@ Products.forEach(product => {
 const buyButtoms = document.getElementsByClassName("btn-buy")
 const ArrayBuyButtoms = Array.from(buyButtoms)
 
+
 ArrayBuyButtoms.forEach(buttom => {
-    buttom.addEventListener("click", ()=>{
-        alert("Hola Funco")
+    buttom.addEventListener("click", (event)=>{
+    
+     // Cart Amount Update
+    let cartProduct = Cart.find(product => product.name == event.target.parentElement.children[0].innerText)
+    // Cart Amount Update
+    if(cartProduct){
+        cartProduct.amount += 1
+    } else {
+    // Cart update with click
+    Cart.push({
+        name: event.target.parentElement.children[0].innerText,
+        amount: 1,
+        price: Number(event.target.parentElement.children[2].children[0].innerText)
+})
+}
+
+    // Cart update function execution
+    cartUpdate()
+    console.log(Cart)
     })
     
 });
+// END BOTTOMS
 
-console.log(buyButtoms)
-console.log(ArrayBuyButtoms)
+console.log(Cart)
 
+// RETO AGREGAR UN INPUT PARA QUE EL USER PONGA LA INFO QUE QUIERA
 
