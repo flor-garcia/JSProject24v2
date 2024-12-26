@@ -1,22 +1,136 @@
+/* Global Reset */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #0a0907;
     color: #e0e0e0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.container-fluid {
-    background-color: #000000;
+/* Navbar */
+.navbar {
+    background-color: #000000 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 .nav-link {
     color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffcc00; /* Añadir un color de hover más visible */
+}
+
+.nav-link:focus, .nav-link:active {
+    color: #ffcc00;
+    outline: none;
+}
+
+/* Offcanvas Cart */
+/* Cambiar el color de fondo del botón que activa el carrito */
+.btn-outline-primary {
+    background-color: #b8860b; /* Cambiar a un color dorado */
+    color: white;
+    border: 1px solid #b8860b; /* Asegurarse de que el borde también tenga el mismo color */
+}
+
+.btn-outline-primary:hover {
+    background-color: #a47500; /* Color más oscuro cuando se pasa el cursor */
+    border: 1px solid #a47500; /* Asegurar que el borde también cambie */
+}
+
+/* Cambiar el color del ícono dentro del botón */
+.btn-outline-primary img {
+    filter: brightness(0) invert(1); /* Invertir el color para que se vea más claro sobre el fondo oscuro */
+}
+
+
+#offcanvasCart {
+    background-color: #000000;
+    color: white;
+    display: grid;  /* Activamos Grid */
+    grid-template-rows: auto 1fr auto;  /* Tres filas: una para el encabezado, una para el body y otra para el total */
+    height: 100vh; /* Hace que el offcanvas ocupe toda la altura */
+    padding: 10px;
+}
+
+
+/* Cart Body: donde se muestra el contenido del carrito */
+#cart-body {
+    display: grid;  /* Cambiar de flex a grid */
+    grid-template-columns: 1fr; /* Definir una columna para que las cards estén en una sola fila */
+    gap: 5px; /* Espacio entre las tarjetas */
+    padding: 5px; /* Reducir el padding dentro del contenedor */
+    overflow-y: auto; /* Si hay más contenido, agrega scroll */
+}
+
+.card {
+    max-width: 540px;
+    background-color: #b8860b; /* Fondo dorado */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0; /* Elimina el margin-bottom ya que el espacio entre las tarjetas lo maneja el grid */
+}
+
+.cart-card-body {
+    padding-left: 15px;
+}
+
+.card-title {
+    text-align: left;
+    margin: 5px 0;
+    color: white; 
+    font-weight: 300; 
+    font-size: 1rem; 
+}
+
+.product-price-amount {
+    text-align: left; /* Alineación a la izquierda */
+    margin-left: 15px; /* Reducir la sangría para el precio */
+    color: white; /* Color blanco */
+    font-weight: 300; /* Letra más fina */
+    font-size: 0.875rem; /* Reducir tamaño de texto */
+}
+
+.btn-delete img {
+    width: 25px; /* Reducir el tamaño de la imagen */
+    height: 25px; /* Reducir el tamaño de la imagen */
+    margin-right: 15px; /* Reducir el margen a la derecha */
+    filter: invert(100%); /* Convertir la imagen a color blanco */
+}
+
+
+#cart-total {
+    display: grid;  /* Activamos Grid en el total para ajustarlo más eficientemente */
+    grid-template-columns: 3fr;  /* Solo una columna para el total */
+    grid-template-rows: auto;  /* Ajusta la altura al contenido */
+    justify-items: center;  /* Centra el texto dentro de la celda */
+    font-size: 0.9rem;  /* Tamaño reducido para el total */
+    padding: 5px 10px;  /* Reducción de padding */
+    background-color: #0a0907; /* Fondo oscuro */
+    color: #b8860b; /* Color dorado */
+    margin-top: 10px; /* Espacio entre el contenido y el total */
+    width: 100%;  /* Ajusta el ancho automáticamente */
+    margin-left: auto; /* Centra el div horizontalmente */
+    margin-right: auto; /* Centra el div horizontalmente */
+    text-align: center;
+}
+
+
+#cart-total p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
 }
 
 
 
-/* START WINE SECTION */
+/* Wine Section */
 #wines {
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +153,7 @@ body {
     flex-direction: column;
     background-color: #090806;
     border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 300px;
     height: 100%;
     overflow: hidden;
@@ -47,23 +161,22 @@ body {
 }
 
 .wine-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(10, 9, 7, 0.8);
+    transform: translateY(-8px) scale(1.05); /* Añadir un poco de escalado */
+    box-shadow: 0 6px 12px rgba(10, 9, 7, 0.7);
 }
 
 .wine-image {
     width: 100%;
-    height: 400px;
+    height: auto;
     object-fit: cover;
     border-bottom: 1px solid #0a0907;
 }
-
 
 .wine-description {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .wine-title {
@@ -76,16 +189,15 @@ body {
 
 .wine-year, .wine-price {
     font-size: 0.875rem;
-    color:#888;
-    justify-content: center;
+    color: #888;
 }
 
 .wine-description p {
     font-size: 1rem;
     margin: 10px 0;
-    padding: 0px;
+    padding: 0;
     color: #e0e0e0;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .btn-buy {
@@ -96,7 +208,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-size: 1rem;
-    margin-top: auto;  /* Esto asegura que el botón se alinee al fondo */
+    margin-top: auto;
     transition: background-color 0.3s ease;
 }
 
@@ -107,12 +219,9 @@ body {
 .text-body-secondary {
     color: #888;
 }
-/* END WINE SECTION */
 
 
-/* MEDIA QUERIES FOR RESPONSIVE DESING */
-
-/* For devices with width 768px or less (tablets and smaller screens) */
+/* Responsive Design */
 @media (max-width: 768px) {
     #wines {
         flex-direction: column;
@@ -126,43 +235,42 @@ body {
 
     .wine-image {
         width: 100%;
-        height: 100%; 
+        height: 100%;
         object-fit: cover;
     }
 
     .wine-title {
-        font-size: 1rem;  /* Adjust title font size */
+        font-size: 1rem;
     }
 
     .wine-description p {
-        font-size: 0.875rem;  /* Adjust description text size */
+        font-size: 0.875rem;
     }
 
     .btn-buy {
-        font-size: 0.90rem;  /* Adjust button font size */
-        padding: 8px 16px;  /* Adjust button padding */
+        font-size: 0.90rem;
+        padding: 8px 16px;
     }
 }
 
-/* For devices with width 480px or less (mobile phones) */
 @media (max-width: 480px) {
     .wine-item {
-        width: 100%;  /* Wine items take up the full width of the screen */
-        max-width: none;  /* Remove any max-width limit */
+        width: 100%;
+        max-width: none;
     }
 
     .wine-image {
         width: 100%;
-        height: 100%; 
+        height: 100%;
         object-fit: cover;
     }
 
     .wine-description p {
-        font-size: 0.85rem;  /* Reduce text size further */
+        font-size: 0.85rem;
     }
 
     .btn-buy {
-        font-size: 0.75rem;  /* Further reduce button font size */
-        padding: 6px 12px;  /* Adjust button padding */
+        font-size: 0.75rem;
+        padding: 6px 12px;
     }
 }

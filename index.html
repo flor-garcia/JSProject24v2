@@ -84,19 +84,27 @@
     aria-labelledby="offcanvasCartLabel">
     <!-- Cart Header -->
     <div class="offcanvas-header">
-    <h5 id="offcanvasCartLabel">Shopping Cart</h5>
+    <h5 id="offcanvasCartLabel">Detalle del carrito</h5>
     <button
     type="button"
+    id="btn-close"
     class="btn-close"
     data-bs-dismiss="offcanvas"
     aria-label="Close"
     ></button>
     </div>
     <!-- Cart Body -->
-    <div id="cart-body" class="offcanvas-body">
-        <p>Your cart is empty.</p>
+    <div id="cart-body" class="offcanvas-body d-flex flex-column justify-content-between">
+        <p>Tu carrito está vacío.</p> 
+    </div>
+    <div id="cart-total" class="offcanvas-body d-flex flex-column justify-content-end total-text mt-auto">
+        <p>El total es: </p>
+    </div>
+
     </div>
 </div>
+
+
 
 
 
