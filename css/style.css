@@ -64,9 +64,8 @@ body {
 #cart-body {
     display: grid;  /* Cambiar de flex a grid */
     grid-template-columns: 1fr; /* Definir una columna para que las cards estén en una sola fila */
-    gap: 5px; /* Espacio entre las tarjetas */
-    padding: 5px; /* Reducir el padding dentro del contenedor */
-    overflow-y: auto; /* Si hay más contenido, agrega scroll */
+    width: 100%;
+    overflow-y: auto;
 }
 
 .card {
@@ -100,7 +99,6 @@ body {
 .btn-delete img {
     width: 25px; /* Reducir el tamaño de la imagen */
     height: 25px; /* Reducir el tamaño de la imagen */
-    margin-right: 15px; /* Reducir el margen a la derecha */
     filter: invert(100%); /* Convertir la imagen a color blanco */
 }
 
@@ -187,9 +185,14 @@ body {
     color: #e0e0e0;
 }
 
-.wine-year, .wine-price {
+.wine-year, .wine-price  {
     font-size: 0.875rem;
-    color: #888;
+    color: white;
+}
+
+.wine-year-secondary{
+    color: #a47500;
+    font-size: 12px;
 }
 
 .wine-description p {

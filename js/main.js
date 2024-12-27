@@ -46,7 +46,7 @@ const cartUpdate = () => {
                         <p class="product-price-amount"><span class="product-price">${product.price}</span> € x <span class="product-amount">${product.amount}</span></p>
                     </div>
                 </div>
-                <div class="col-md-4 text-end">
+                <div class="col-md-4">
                     <button class="btn-delete" style="border: none; background: none; padding: 0;">
                     <img src="images/basura.png" class="img-fluid rounded-start" alt="...">
                     </button>
@@ -91,6 +91,8 @@ const cartUpdate = () => {
 }
 // END CART DETAIL
 
+
+
 // START PRODUCTS CARDS
 const productItem = document.getElementById("wine-group")
 
@@ -100,14 +102,36 @@ Products.forEach(product => {
         <img src="${product.image}" class="wine-image" alt="">
         <div class="wine-description">
             <h5 class="wine-title">${product.name}</h5>
-            <p class="wine-year"><small class="text-body-secondary">${product.year}</small></p>
+            <p class="wine-year"><small class="wine-year-secondary">${product.year}</small></p>
             <p class="wine-price">Precio <span>${product.price}</span> €</p>
             <p class="wine-description">${product.description}</p>
             <a href="#" class="btn-buy">Comprar</a>
         </div>
+        <div>
+        <button class="btn-add">+</button>
+        <input type="number" name="" id="card-counter">
+        <button class="btn-reduce">-</button>
+        </div>
     </div>` 
 });
 // END PRODUCTS CARDS
+
+
+// COUNTER
+
+const counter = document.getElementById("card-counter")
+const arrayCounter = Array.from(counter)
+
+arrayCounter.addEventListener("input", () => {
+    
+})
+
+
+
+
+
+
+
 
 // START BUY BUTTONS
 const buyButtoms = document.getElementsByClassName("btn-buy")
